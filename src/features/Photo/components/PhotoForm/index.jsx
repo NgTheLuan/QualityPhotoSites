@@ -1,13 +1,14 @@
 import { PHOTO_CATEGORY_OPTIONS } from "../../../../constants/global";
 import Images from "../../../../constants/images";
-import Select from "react-select"; //npm i react-select
+// import Select from "react-select"; //npm i react-select
 import React from "react";
 import { FastField, Formik } from "formik"; //npm install formik --save
-// import { Button, FormGroup, Input, Label } from "reactstrap";
+import { Button, FormGroup, Input, Label } from "reactstrap";
 import { Form } from "formik";
 import PropTypes from "prop-types";
 import InputField from "../../../../custom-fields/InputField";
 import SelectField from "../../../../custom-fields/SelectField";
+import RandomPhotoField from "../../../../custom-fields/RandomPhotoField";
 
 function PhotoForm(props) {
   const initialValues = {
@@ -39,26 +40,18 @@ function PhotoForm(props) {
               options={PHOTO_CATEGORY_OPTIONS}
             />
 
-            {/* <FormGroup>
-              <Label for="categoryId">Photo</Label>
-              <div>
-                <Button type="button" outline color="primary">
-                  Random a photo
-                </Button>
-              </div>
-              <div>
-                <img
-                  width="250"
-                  height="200"
-                  src={Images.CLOCK_BG}
-                  alt="colorful"
-                ></img>
-              </div>
-            </FormGroup> */}
+            <FastField
+              name="photo"
+              component={RandomPhotoField}
+              label="Photo"
+            />
 
-            {/* <FormGroup>
-              <Button color="primary"> Add to album</Button>
-            </FormGroup> */}
+            <FormGroup>
+              <Button type="submit">
+                {/* {isSubmitting && <Spinner size="sm" />}
+                {isAddMode ? "Add to album" : "Update your photo"} */}
+              </Button>
+            </FormGroup>
           </Form>
         );
       }}
