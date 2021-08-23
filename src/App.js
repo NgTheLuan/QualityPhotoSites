@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header";
 import NotFound from "./components/NotFound";
+import { Navbar, Nav } from "react-bootstrap";
 
 // Lazy load - Code splitting
 const Photo = React.lazy(() => import("./features/Photo"));
@@ -12,7 +13,13 @@ function App() {
     <div className="photo-app">
       <Suspense fallback={<div>Loading ...</div>}>
         <BrowserRouter>
-          <Header />
+          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Header />
+            <Nav className="mr-auto">
+              <Nav.Link href="#features">Features</Nav.Link>
+            </Nav>
+          </Navbar>
+
           <ul>
             <li>
               <Link to="/photos">Go to photo page</Link>
